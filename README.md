@@ -187,3 +187,11 @@ mono, 24 kHz; сквозной round-trip через whisper даёт **100 % с
 ## Лицензия
 
 [MIT](LICENSE) © Slava-inc
+
+## Деплой
+
+Юнит systemd для продакшена — шаблон в
+[`deploy/english-tutor.service.example`](deploy/english-tutor.service.example).
+Локальный `english-tutor.service` в корне намеренно **не** хранится в репозитории:
+он содержит пути конкретного сервера и собирается из шаблона командой `sed`
+(см. раздел «systemd» выше).
