@@ -12,3 +12,5 @@ dist/
 google-speech-key.json
 .secrets.baseline
 ПЛАН_репетитор.md
+# Local systemd unit: holds server-specific paths. Use deploy/*.example instead.
+/english-tutor.service
