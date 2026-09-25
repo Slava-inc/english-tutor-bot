@@ -15,6 +15,13 @@ updates:
       # together with engines.node and the CI matrix, in one deliberate change.
       - dependency-name: '@types/node'
         update-types: ['version-update:semver-major']
+      # better-sqlite3 >= 12 requires node >= 22, while this project still
+      # supports and tests Node 20. On Node 20 it installs with an EBADENGINE
+      # warning and then segfaults (exit 139) because the prebuilt native
+      # binary is built against a newer ABI. Ignore majors until engines.node
+      # and the CI matrix are raised together.
+      - dependency-name: 'better-sqlite3'
+        update-types: ['version-update:semver-major']
     groups:
       # Keep dev-only tooling noise in a single PR.
       dev-dependencies:
