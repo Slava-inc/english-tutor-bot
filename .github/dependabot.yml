@@ -8,6 +8,13 @@ updates:
     open-pull-requests-limit: 5
     commit-message:
       prefix: 'chore(deps)'
+    ignore:
+      # @types/node must match the runtime we actually support and test
+      # (engines.node >= 20, CI matrix 20/22). Typing against a newer Node
+      # would type-check APIs that do not exist at runtime. Raise this
+      # together with engines.node and the CI matrix, in one deliberate change.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     groups:
       # Keep dev-only tooling noise in a single PR.
       dev-dependencies:
