@@ -42,7 +42,7 @@
   "dependencies": {
     "@google-cloud/text-to-speech": "^5.5.0",
     "better-sqlite3": "^9.2.2",
-    "dotenv": "^17.4.2",
+    "dotenv": "^18.0.2",
     "grammy": "^1.27.0",
     "openai": "^4.52.7",
     "pino": "^8.17.2",
