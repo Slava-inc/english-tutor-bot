@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.env.local
+data/
+*.log
+*.db
+*.db-shm
+*.db-wal
+google-speech-key.json
+.secrets.baseline
+ПЛАН_репетитор.md

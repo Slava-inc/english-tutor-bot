@@ -1,0 +1,46 @@
+# ============================================================================
+# English Tutor — systemd unit TEMPLATE
+# ----------------------------------------------------------------------------
+# Copy this file, replace __PROJECT_DIR__ / __RUN_USER__ with your values, then:
+#
+#   sed -e "s|__PROJECT_DIR__|$PWD|g" \
+#       -e "s|__RUN_USER__|$USER|g" \
+#       deploy/english-tutor.service.example | sudo tee /etc/systemd/system/english-tutor.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now english-tutor
+#
+# __PROJECT_DIR__ = absolute path to this repository (no trailing slash)
+# __RUN_USER__    = the user that owns the repo and may read .env
+# ============================================================================
+
+[Unit]
+Description=English Tutor Telegram Bot
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__RUN_USER__
+Group=__RUN_USER__
+WorkingDirectory=__PROJECT_DIR__
+ExecStart=/usr/bin/node dist/index.js
+Restart=always
+RestartSec=10
+# Keep logs next to the project (adjust or use journald if you prefer)
+StandardOutput=append:__PROJECT_DIR__/bot.log
+StandardError=append:__PROJECT_DIR__/bot.log
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Resource limits (TTS/STT are network-bound; the DB is tiny)
+LimitNOFILE=65536
+MemoryMax=512M
+
+# Environment variables - loaded from .env in the project root
+EnvironmentFile=__PROJECT_DIR__/.env
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

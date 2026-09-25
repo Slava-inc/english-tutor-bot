@@ -1,0 +1,58 @@
+{
+  "name": "english-tutor-bot",
+  "version": "0.1.0",
+  "description": "Telegram personal English tutor bot (British English, B1 → B2)",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "npm run build && node scripts/smoke.db.mjs",
+    "verify:stt": "npm run build && node scripts/verify-stt.mjs",
+    "verify:tts": "npm run build && node scripts/verify-tts.mjs",
+    "verify:voice": "npm run build && node scripts/verify-telegram-voice.mjs",
+    "rehearse": "npm run build && node scripts/rehearse.mjs",
+    "rehearse:live": "npm run build && node scripts/rehearse.mjs --live",
+    "verify": "npm run typecheck && npm run test"
+  },
+  "keywords": [
+    "telegram",
+    "english",
+    "tutor",
+    "grammy",
+    "deepseek",
+    "text-to-speech"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slava-inc/english-tutor-bot.git"
+  },
+  "homepage": "https://github.com/Slava-inc/english-tutor-bot#readme",
+  "bugs": {
+    "url": "https://github.com/Slava-inc/english-tutor-bot/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@google-cloud/text-to-speech": "^5.5.0",
+    "better-sqlite3": "^9.2.2",
+    "dotenv": "^17.4.2",
+    "grammy": "^1.27.0",
+    "openai": "^4.52.7",
+    "pino": "^8.17.2",
+    "pino-pretty": "^10.3.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.10.6",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.1"
+  }
+}
