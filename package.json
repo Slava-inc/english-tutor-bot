@@ -45,7 +45,7 @@
     "dotenv": "^17.4.2",
     "grammy": "^1.27.0",
     "openai": "^4.52.7",
-    "pino": "^8.17.2",
+    "pino": "^10.3.1",
     "pino-pretty": "^10.3.1"
   },
   "devDependencies": {
